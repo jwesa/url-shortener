@@ -1,0 +1,28 @@
+{
+    "name": "url-shortener",
+    "version": "1.0.0",
+    "description": "url shortener app using React, Express, MongoDB",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "server": "nodemon app.js",
+        "client": "npm run start --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "repository": "https://github.com/jwesa/url-shortener.git",
+    "author": "jwesa",
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "config": "^3.3.7",
+        "express": "^4.17.3",
+        "express-validator": "^6.14.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^6.3.0"
+    },
+    "devDependencies": {
+        "concurrently": "^7.1.0",
+        "nodemon": "^2.0.15"
+    }
+}
