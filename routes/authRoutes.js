@@ -48,9 +48,10 @@ authRouter.post(
                 message: "User created.",
             });
         } catch (error) {
-            res.status(500).json({
-                message: "Something went wrong. Try again",
-            });
+            // res.status(500).json({
+            //     message: "Something went wrong. Try again",
+            // });
+            console.log(error);
         }
     }
 );

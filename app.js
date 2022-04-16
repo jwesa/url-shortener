@@ -19,6 +19,8 @@ mongoose.connect(
     }
 );
 
+app.use(express.json({ extended: true }));
+
 app.use("/api/auth", authRoute);
 
 app.listen(PORT, () => {
