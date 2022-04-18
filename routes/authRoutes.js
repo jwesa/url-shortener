@@ -23,30 +23,31 @@ authRouter.post(
             if (!errors.isEmpty()) {
                 res.status(400).json({
                     errors: errors.array(),
-                    message: "Incorrect data on register",
+                    message:
+                        errors.array()[0].msg || "Incorrect data on register",
+                });
+            } else {
+                const { email, password } = req.body;
+
+                const candidate = await User.findOne({ email });
+                if (candidate) {
+                    return res.status(400).json({
+                        message: "User already exists",
+                    });
+                }
+
+                const hashedPassword = await bcrypt.hash(password, 12);
+
+                const user = new User({
+                    email,
+                    password: hashedPassword,
+                });
+                await user.save();
+
+                res.status(201).json({
+                    message: "User created.",
                 });
             }
-
-            const { email, password } = req.body;
-
-            const candidate = await User.findOne({ email });
-            if (candidate) {
-                return res.status(400).json({
-                    message: "User already exists",
-                });
-            }
-
-            const hashedPassword = await bcrypt.hash(password, 12);
-
-            const user = new User({
-                email,
-                password: hashedPassword,
-            });
-            await user.save();
-
-            res.status(201).json({
-                message: "User created.",
-            });
         } catch (error) {
             // res.status(500).json({
             //     message: "Something went wrong. Try again",
@@ -68,7 +69,7 @@ authRouter.post(
             if (!errors.isEmpty()) {
                 res.status(400).json({
                     errors: errors.array(),
-                    message: "Incorrect data on login",
+                    message: errors.array()[0].msg || "Incorrect data on login",
                 });
             }
 
