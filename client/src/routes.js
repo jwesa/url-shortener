@@ -5,8 +5,9 @@ import DetailPage from "./pages/DetailPage";
 import LinksPage from "./pages/LinksPage";
 
 const useRoutes = (isAuthenticated) => {
-    if (isAuthenticated)
-        return (
+    if (isAuthenticated) {
+		return (
+
             <Switch>
                 <Route path="/links" exact>
                     <LinksPage />
@@ -20,10 +21,11 @@ const useRoutes = (isAuthenticated) => {
                 <Redirect to="/create" />
             </Switch>
         );
+    }
     return (
         <Switch>
             <Route path="/" exact>
-                <AuthPage />
+				<AuthPage />
             </Route>
             <Redirect to="/" />
         </Switch>
