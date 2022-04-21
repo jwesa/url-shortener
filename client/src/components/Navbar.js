@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const auth = useContext(AuthContext);
     const handleLogout = (event) => {
         event.preventDefault();
         auth.logout();
-        history.push("/");
+        navigate("/");
     };
 
     return (
@@ -19,10 +19,10 @@ const Navbar = () => {
                 </span>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li>
-                        <NavLink to="/create">Create</NavLink>
+                        <Link to="/create">Create</Link>
                     </li>
                     <li>
-                        <NavLink to="/links">Links</NavLink>
+                        <Link to="/links">Links</Link>
                     </li>
                     <li>
                         <a href="/" onClick={handleLogout}>
