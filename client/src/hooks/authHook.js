@@ -22,15 +22,14 @@ const useAuth = () => {
     const logout = useCallback(() => {
         setToken(null);
         setUserId(null);
-
         localStorage.removeItem(storageName);
     }, []);
 
     useEffect(() => {
-		const data = JSON.parse(localStorage.getItem(storageName));
-		if (data && data.token) {
-			login(data.token, data.userId)
-		}
+        const data = JSON.parse(localStorage.getItem(storageName));
+        if (data && data.token) {
+            login(data.token, data.userId);
+        }
     }, [login]);
 
     return { login, logout, token, userId };

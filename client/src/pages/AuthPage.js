@@ -50,7 +50,7 @@ const AuthPage = () => {
                     <div className="card-content white-text">
                         <span className="card-title">Authorization</span>
                         <div>
-                            <div class="input-field">
+                            <div className="input-field">
                                 <input
                                     className="yellow-input"
                                     placeholder="Enter your email"
@@ -67,7 +67,7 @@ const AuthPage = () => {
                                     Email
                                 </label>
                             </div>
-                            <div class="input-field">
+                            <div className="input-field">
                                 <input
                                     className="yellow-input"
                                     placeholder="Enter your password"

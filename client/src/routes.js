@@ -6,8 +6,7 @@ import LinksPage from "./pages/LinksPage";
 
 const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {
-		return (
-
+        return (
             <Switch>
                 <Route path="/links" exact>
                     <LinksPage />
@@ -22,14 +21,16 @@ const useRoutes = (isAuthenticated) => {
             </Switch>
         );
     }
-    return (
-        <Switch>
-            <Route path="/" exact>
-				<AuthPage />
-            </Route>
-            <Redirect to="/" />
-        </Switch>
-    );
+
+    if (!isAuthenticated)
+        return (
+            <Switch>
+                <Route path="/" exact>
+                    <AuthPage />
+                </Route>
+                <Redirect to="/" />
+            </Switch>
+        );
 };
 
 export default useRoutes;
