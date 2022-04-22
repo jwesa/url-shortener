@@ -17,6 +17,10 @@ const AuthPage = () => {
         clearError();
     }, [error, message, clearError]);
 
+    useEffect(() => {
+        window.M.updateTextFields();
+    }, []);
+
     const changeHandler = (event) => {
         setForm({
             ...form,
@@ -45,7 +49,7 @@ const AuthPage = () => {
     return (
         <div className="row">
             <div className="col s6 offset-s3">
-                <h1>URL shortener</h1>
+                <h1 className="center-align">URL shortener</h1>
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
                         <span className="card-title">Authorization</span>
@@ -57,6 +61,7 @@ const AuthPage = () => {
                                     id="email"
                                     name="email"
                                     type="text"
+                                    value={form.email}
                                     onChange={changeHandler}
                                 />
                                 <label
@@ -74,6 +79,7 @@ const AuthPage = () => {
                                     id="password"
                                     name="password"
                                     type="password"
+                                    value={form.password}
                                     onChange={changeHandler}
                                 />
                                 <label className="active" htmlFor="password">

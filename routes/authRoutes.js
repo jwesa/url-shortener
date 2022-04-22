@@ -49,10 +49,9 @@ authRouter.post(
                 });
             }
         } catch (error) {
-            // res.status(500).json({
-            //     message: "Something went wrong. Try again",
-            // });
-            console.log(error);
+            res.status(500).json({
+                message: "Something went wrong. Try again",
+            });
         }
     }
 );

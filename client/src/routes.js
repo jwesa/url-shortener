@@ -8,10 +8,10 @@ const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {
         return (
             <Routes>
-                <Route exact path="/links" element={<LinksPage />} />
                 <Route exact path="/create" element={<CreatePage />} />
+                <Route exact path="/links" element={<LinksPage />} />
                 <Route path="/detail/:id" element={<DetailPage />} />
-                <Route path="*" element={<Navigate to="/create" replace/>} />
+                <Route path="*" element={<Navigate to="/create" replace />} />
             </Routes>
         );
     }
@@ -19,7 +19,7 @@ const useRoutes = (isAuthenticated) => {
     return (
         <Routes>
             <Route exact path="/" element={<AuthPage />} />
-            <Route path="*" element={<Navigate to="/" replace/>} />
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     );
 };
