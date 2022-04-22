@@ -4,10 +4,12 @@
     "description": "url shortener app using React, Express, MongoDB",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js",
+        "start": "cross-env NODE_ENV=production node app.js",
         "server": "nodemon app.js",
         "client": "npm run start --prefix client",
-        "dev": "concurrently \"npm run server\" \"npm run client\""
+        "client:install": "npm install --prefix client",
+        "client:build": "npm run build --prefix client",
+        "dev": "cross_env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
     },
     "repository": "https://github.com/jwesa/url-shortener.git",
     "author": "jwesa",
@@ -24,6 +26,7 @@
     },
     "devDependencies": {
         "concurrently": "^7.1.0",
+        "cross-env": "^7.0.3",
         "nodemon": "^2.0.15"
     }
 }
